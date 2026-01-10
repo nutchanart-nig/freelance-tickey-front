@@ -174,14 +174,6 @@ The Laravel backend provides the following API endpoints:
 2. Serve the `build` folder with a web server
 3. Update API URLs in production environment
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## License
 
 This project is licensed under the MIT License.
