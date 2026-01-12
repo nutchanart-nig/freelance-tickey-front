@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -9,13 +9,10 @@ import {
   IconButton,
   Menu,
   MenuItem,
-} from '@mui/material';
-import {
-  AccountCircle,
-  ExitToApp,
-} from '@mui/icons-material';
-import { Avatar } from '@mui/material';
-import { useAuth } from '../contexts/AuthContext';
+} from "@mui/material";
+import { AccountCircle, ExitToApp } from "@mui/icons-material";
+import { Avatar } from "@mui/material";
+import { useAuth } from "../contexts/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -33,7 +30,7 @@ const Header = () => {
   const handleLogout = () => {
     handleClose();
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -42,25 +39,38 @@ const Header = () => {
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, cursor: 'pointer' }}
-          onClick={() => navigate('/')}
+          sx={{ cursor: "pointer", mr: 2 }}
+          onClick={() => navigate("/")}
         >
-          Laravel React App
+          Ticket
         </Typography>
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {/* Navigation Buttons */}
-          <Button color="inherit" onClick={() => navigate('/home')} sx={{ mr: 1 }}>
-            Home
-          </Button>
-          <Button color="inherit" onClick={() => navigate('/ticker')} sx={{ mr: 2 }}>
-            Tickets
-          </Button>
+        {isAuthenticated && (
+          <>
+            <Button
+              color="inherit"
+              onClick={() => navigate("/home")}
+              sx={{ mr: 1 }}
+            >
+              Home
+            </Button>
+            <Button
+              color="inherit"
+              onClick={() => navigate("/ticker")}
+              sx={{ mr: 2 }}
+            >
+              Tickets
+            </Button>
+          </>
+        )}
 
+        <Box sx={{ flexGrow: 1 }} />
+
+        <Box sx={{ display: "flex", alignItems: "center" }}>
           {isAuthenticated ? (
             <>
               <Avatar
-                sx={{ width: 32, height: 32, mr: 1, bgcolor: 'secondary.main' }}
+                sx={{ width: 32, height: 32, mr: 1, bgcolor: "secondary.main" }}
               >
                 {user?.name?.charAt(0).toUpperCase()}
               </Avatar>
@@ -81,13 +91,13 @@ const Header = () => {
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
@@ -100,10 +110,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Button color="inherit" onClick={() => navigate('/login')}>
+              <Button color="inherit" onClick={() => navigate("/login")}>
                 Login
               </Button>
-              <Button color="inherit" onClick={() => navigate('/register')}>
+              <Button color="inherit" onClick={() => navigate("/register")}>
                 Register
               </Button>
             </>

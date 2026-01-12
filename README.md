@@ -1,6 +1,6 @@
-# Laravel React MUI Application
+# Ticket Management Application
 
-A full-stack web application built with Laravel 11 (backend) and React with Material-UI v5 (frontend).
+A full-stack ticket management system built with Laravel 11 (backend) and React with Material-UI v5 (frontend).
 
 ## Features
 
@@ -61,7 +61,7 @@ Before running this application, make sure you have the following installed:
    ```
    Edit the `.env` file with your database credentials and other settings:
    ```env
-   APP_NAME="Laravel API"
+   APP_NAME="Ticket"
    APP_ENV=local
    APP_KEY=  # Generate with: php artisan key:generate
    APP_DEBUG=true
@@ -70,7 +70,7 @@ Before running this application, make sure you have the following installed:
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=laravel_api
+   DB_DATABASE=ticket_app
    DB_USERNAME=your_username
    DB_PASSWORD=your_password
 
