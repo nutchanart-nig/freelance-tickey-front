@@ -10,7 +10,7 @@ import {
   TextField,
   InputAdornment,
 } from "@mui/material";
-import { Add as AddIcon, FilterList as FilterIcon, Search as SearchIcon } from "@mui/icons-material";
+import { Add as AddIcon, Search as SearchIcon } from "@mui/icons-material";
 import TicketCard from "../components/TicketCard";
 import CreateTicket from "../components/CreateTicket";
 import TicketCardEdit from "../components/TicketCardEdit";
@@ -73,7 +73,7 @@ const Ticker = () => {
   };
 
   const handleEditTicket = (ticketId) => {
-    const ticket = tickets.find(t => t.id === ticketId);
+    const ticket = tickets.find((t) => t.id === ticketId);
     if (ticket) {
       setSelectedTicket(ticket);
       setOpenEditDialog(true);
@@ -81,11 +81,11 @@ const Ticker = () => {
   };
 
   const handleUpdateTicket = (ticketId, updatedData) => {
-    setTickets(tickets.map(ticket =>
-      ticket.id === ticketId
-        ? { ...ticket, ...updatedData }
-        : ticket
-    ));
+    setTickets(
+      tickets.map((ticket) =>
+        ticket.id === ticketId ? { ...ticket, ...updatedData } : ticket
+      )
+    );
     setSelectedTicket(null);
   };
 
@@ -103,25 +103,27 @@ const Ticker = () => {
     }
 
     const lowerSearchTerm = searchTerm.toLowerCase();
-    return tickets.filter((ticket) =>
-      ticket.title.toLowerCase().includes(lowerSearchTerm) ||
-      ticket.details.toLowerCase().includes(lowerSearchTerm) ||
-      ticket.status.toLowerCase().includes(lowerSearchTerm) ||
-      ticket.priority.toLowerCase().includes(lowerSearchTerm)
+    return tickets.filter(
+      (ticket) =>
+        ticket.title.toLowerCase().includes(lowerSearchTerm) ||
+        ticket.details.toLowerCase().includes(lowerSearchTerm) ||
+        ticket.status.toLowerCase().includes(lowerSearchTerm) ||
+        ticket.priority.toLowerCase().includes(lowerSearchTerm)
     );
   };
 
   const filteredTickets = getFilteredTickets();
 
   return (
-    <Container 
+    <Container
       maxWidth={false}
       sx={{
         mt: 4,
         mb: 4,
-        maxWidth: '1920px',
-        width: '100%'
-      }}>
+        maxWidth: "1920px",
+        width: "100%",
+      }}
+    >
       <Box sx={{ mb: 4 }}>
         <Typography variant="h3" component="h1" gutterBottom>
           Ticket
@@ -157,7 +159,8 @@ const Ticker = () => {
 
             {/* Quick Stats */}
             <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-              Quick Stats {searchTerm && `(Filtered: ${filteredTickets.length})`}
+              Quick Stats{" "}
+              {searchTerm && `(Filtered: ${filteredTickets.length})`}
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -169,19 +172,25 @@ const Ticker = () => {
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography variant="body2">Open:</Typography>
                 <Typography variant="body2" fontWeight="bold">
-                  {searchTerm ? getFilteredTicketsByStatus("open").length : getTicketsByStatus("open").length}
+                  {searchTerm
+                    ? getFilteredTicketsByStatus("open").length
+                    : getTicketsByStatus("open").length}
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography variant="body2">In Progress:</Typography>
                 <Typography variant="body2" fontWeight="bold">
-                  {searchTerm ? getFilteredTicketsByStatus("in-progress").length : getTicketsByStatus("in-progress").length}
+                  {searchTerm
+                    ? getFilteredTicketsByStatus("in-progress").length
+                    : getTicketsByStatus("in-progress").length}
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography variant="body2">Urgent:</Typography>
                 <Typography variant="body2" fontWeight="bold">
-                  {searchTerm ? getFilteredTicketsByStatus("urgent").length : getTicketsByStatus("urgent").length}
+                  {searchTerm
+                    ? getFilteredTicketsByStatus("urgent").length
+                    : getTicketsByStatus("urgent").length}
                 </Typography>
               </Box>
             </Box>
@@ -190,7 +199,14 @@ const Ticker = () => {
 
         {/* Right Panel - Ticket Cards */}
         <Grid item xs={12} md={10}>
-          <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              mb: 3,
+            }}
+          >
             <Typography variant="h5" gutterBottom sx={{ mb: 0 }}>
               All Tickets
             </Typography>
@@ -208,7 +224,7 @@ const Ticker = () => {
                   </InputAdornment>
                 ),
               }}
-              sx={{ minWidth: 500, maxWidth:650 }}
+              sx={{ minWidth: 500, maxWidth: 650 }}
             />
           </Box>
 
@@ -240,13 +256,14 @@ const Ticker = () => {
               }}
             >
               <Typography variant="h6" color="text.secondary" gutterBottom>
-                {searchTerm ? "No tickets match your search" : "No tickets found"}
+                {searchTerm
+                  ? "No tickets match your search"
+                  : "No tickets found"}
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
                 {searchTerm
                   ? "Try adjusting your search terms or clear the search to see all tickets"
-                  : "Create your first ticket to get started"
-                }
+                  : "Create your first ticket to get started"}
               </Typography>
               {searchTerm ? (
                 <Button

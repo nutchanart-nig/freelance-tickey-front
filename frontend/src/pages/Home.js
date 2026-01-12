@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -11,42 +12,44 @@ import {
   Avatar,
 } from '@mui/material';
 import {
-  Dashboard,
+  // Dashboard,
+  // Security,
+  // Api,
   AccountCircle,
-  Security,
-  Api,
+  Assignment,
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 
 const Home = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const features = [
-    {
-      title: 'Dashboard',
-      description: 'Welcome to your personal dashboard',
-      icon: <Dashboard fontSize="large" color="primary" />,
-    },
+    // {
+    //   title: 'Dashboard',
+    //   description: 'Welcome to your personal dashboard',
+    //   icon: <Dashboard fontSize="large" color="primary" />,
+    // },
     {
       title: 'Profile Management',
       description: 'Manage your account settings and preferences',
-      icon: <AccountCircle fontSize="large" color="primary" />,
+      icon: <AccountCircle fontSize="large" style={{color: '#9c27b0'}} />,
     },
-    {
-      title: 'API Integration',
-      description: 'Seamless integration with Laravel backend',
-      icon: <Api fontSize="large" color="primary" />,
-    },
-    {
-      title: 'Security',
-      description: 'Secure authentication and data protection',
-      icon: <Security fontSize="large" color="primary" />,
-    },
+    // {
+    //   title: 'API Integration',
+    //   description: 'Seamless integration with Laravel backend',
+    //   icon: <Api fontSize="large" color="primary" />,
+    // },
+    // {
+    //   title: 'Security',
+    //   description: 'Secure authentication and data protection',
+    //   icon: <Security fontSize="large" color="primary" />,
+    // },
     {
       title: 'Ticket',
-      description: 'Secure authentication and data protection',
-      icon: <AccountCircle fontSize="large" color="primary" />,
-      to: "/ticket"
+      description: 'Manage and track support tickets',
+      icon: <Assignment fontSize="large" color="secondary" />,
+      to: "/ticker"
     },
   ];
 
@@ -70,7 +73,7 @@ const Home = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              height: '100%',
+              height: '450px',
             }}
           >
             <Avatar
@@ -98,19 +101,19 @@ const Home = () => {
           <Grid container spacing={3}>
             {features.map((feature, index) => (
               <Grid item xs={12} sm={6} key={index}>
-                <Card sx={{ height: '100%' }} href={feature.to} >
-                <CardActionArea>
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <Box sx={{ mb: 2 }}>
-                      {feature.icon}
-                    </Box>
-                    <Typography variant="h6" component="h3" gutterBottom>
-                      {feature.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {feature.description}
-                    </Typography>
-                  </CardContent>
+                <Card sx={{ height: '100%' }}>
+                  <CardActionArea onClick={() => feature.to && navigate(feature.to)}>
+                    <CardContent sx={{ textAlign: 'center' }}>
+                      <Box sx={{ mb: 2 }}>
+                        {feature.icon}
+                      </Box>
+                      <Typography variant="h6" component="h3" gutterBottom>
+                        {feature.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {feature.description}
+                      </Typography>
+                    </CardContent>
                   </CardActionArea>
                 </Card>
               </Grid>
