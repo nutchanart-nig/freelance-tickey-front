@@ -54,6 +54,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await api.post('/api/login', { email, password });
       const { user, token: newToken } = response.data;
+      console.log("🚀 ~ login ~ response.data:", response.data)
 
       setToken(newToken);
       setUser(user);

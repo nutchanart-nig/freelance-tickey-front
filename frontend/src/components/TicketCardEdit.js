@@ -8,9 +8,11 @@ import {
   MenuItem,
   Button,
   Box,
+  Modal,
+  Typography
 } from '@mui/material';
 
-const TicketCardEdit = ({ open, onClose, onUpdate, ticket }) => {
+const TicketCardEdit = ({ open, onClose, onUpdate, onDelete, ticket }) => {
   const [editTicket, setEditTicket] = useState({
     title: '',
     details: '',
@@ -29,6 +31,19 @@ const TicketCardEdit = ({ open, onClose, onUpdate, ticket }) => {
     { name: 'Light Purple', value: '#f3e5f5' },
     { name: 'Light Yellow', value: '#fffde7' },
   ];
+
+  const modalStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+    textAlign:'center',
+    borderRadius: '16px',
+  };
 
   // Populate form when ticket prop changes or dialog opens
   useEffect(() => {
@@ -62,6 +77,10 @@ const TicketCardEdit = ({ open, onClose, onUpdate, ticket }) => {
     });
     onClose();
   };
+
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
@@ -142,7 +161,14 @@ const TicketCardEdit = ({ open, onClose, onUpdate, ticket }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose} variant="outlined" color='cancel' >Cancel</Button>
+        <Button
+          onClick={handleOpenModal}
+          color="error"
+          variant="outlined"
+        >
+          Delete
+        </Button>
         <Button
           onClick={handleUpdate}
           variant="contained"
@@ -151,6 +177,28 @@ const TicketCardEdit = ({ open, onClose, onUpdate, ticket }) => {
           Update
         </Button>
       </DialogActions>
+
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Delete
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            You confirm that you wish to delete it.
+          </Typography>
+
+          <Box sx={{ mt: 3, display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
+            <Button class="edit-btn" onClose={handleCloseModal}> No</Button>
+            <Button class="edit-btn" onClick={() => onDelete(ticket.id)}> Yes</Button>
+          </Box>
+        </Box>
+      </Modal>
+
     </Dialog>
   );
 };

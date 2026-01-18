@@ -29,17 +29,19 @@ function App() {
             <Route
               path="/home"
               element={
-                <PrivateRoute>
+                // <PrivateRoute>
+                //   <Home />
+                // </PrivateRoute>
                   <Home />
-                </PrivateRoute>
               }
             />
             <Route
               path="/ticker"
               element={
-                <PrivateRoute>
+                // <PrivateRoute>
+                //   <Ticker />
+                // </PrivateRoute>
                   <Ticker />
-                </PrivateRoute>
               }
             />
             <Route path="/" element={<Navigate to="/home" replace />} />

@@ -26,7 +26,7 @@ php artisan migrate
 
 echo.
 echo Starting Laravel development server...
-echo Access the API at: http://localhost:8000
-php artisan serve
+echo Access the API at: http://localhost:8080
+php artisan serve --port=8080
 
 pause

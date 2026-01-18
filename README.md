@@ -65,7 +65,7 @@ Before running this application, make sure you have the following installed:
    APP_ENV=local
    APP_KEY=  # Generate with: php artisan key:generate
    APP_DEBUG=true
-   APP_URL=http://localhost:8000
+   APP_URL=http://localhost:8080
 
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
@@ -91,7 +91,7 @@ Before running this application, make sure you have the following installed:
    ```bash
    php artisan serve
    ```
-   The API will be available at `http://localhost:8000`
+   The API will be available at `http://localhost:8080`
 
 ## Frontend Setup (React)
 

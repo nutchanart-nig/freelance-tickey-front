@@ -13,6 +13,10 @@ const theme = createTheme({
     secondary: {
       main: '#dc004e',
     },
+    cancel: {
+      main: '#dc004e',
+      color: '#fff'
+    },
     purple: {
       main: '#9c27b0',
     },
@@ -40,6 +44,7 @@ root.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true, }}>
+      {/* <BrowserRouter future={{ v7_relativeSplatPath: true }}> */}
         <App />
       </BrowserRouter>
     </ThemeProvider>

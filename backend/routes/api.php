@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 // Simple API test route
@@ -13,6 +14,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
+
+// Ticket routes (protected by authentication)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('tickets', TicketController::class);
+});
 
 // Debug route
 Route::get('/debug', function () {

@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import {
   Edit as EditIcon,
+  Delete as DeleteIcon,
   AccessTime as AccessTimeIcon,
 } from '@mui/icons-material';
 
@@ -19,6 +20,7 @@ const TicketCard = ({
   status = 'open',
   priority = 'medium',
   onEdit,
+  onDelete,
   backgroundColor = '#ffffff',
   ...props
 }) => {
@@ -130,24 +132,38 @@ const TicketCard = ({
           {/* End time on the left */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
             <AccessTimeIcon sx={{ fontSize: 16, color: 'text.secondary' }} />
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" color="text.secondary" sx={{ fontSize: 12}}>
               {endTime}
             </Typography>
           </Box>
 
-          {/* Edit FAB on the right */}
-          <Fab
-            size="small"
-            color="secondary"
-            onClick={onEdit}
-            sx={{
-              minWidth: 'auto',
-              width: 40,
-              height: 40,
-            }}
-          >
-            <EditIcon />
-          </Fab>
+          {/* Action buttons on the right */}
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Fab
+              size="small"
+              color="error"
+              onClick={onDelete}
+              sx={{
+                minWidth: 'auto',
+                width: 35,
+                height: 30,
+              }}
+            >
+              <DeleteIcon />
+            </Fab>
+            <Fab
+              size="small"
+              color="secondary"
+              onClick={onEdit}
+              sx={{
+                minWidth: 'auto',
+                width: 35,
+                height: 30,
+              }}
+            >
+              <EditIcon />
+            </Fab>
+          </Box>
         </Box>
       </CardContent>
     </Card>

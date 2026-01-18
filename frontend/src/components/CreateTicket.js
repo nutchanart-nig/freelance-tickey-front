@@ -142,7 +142,7 @@ const CreateTicket = ({ open, onClose, onCreate }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose} variant="outlined" color='cancel'>Cancel</Button>
         <Button
           onClick={handleCreate}
           variant="contained"
