@@ -473,6 +473,8 @@ const Ticker = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+                bgcolor:'#fff',
+                borderRadius: 3,
                 py: 8,
                 textAlign: "center",
               }}

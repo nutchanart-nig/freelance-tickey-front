@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" elevation={1}>
+    <AppBar position="static" elevation={1} style={{backgroundColor:'#330000f0'}}>
       <Toolbar>
         <Typography
           variant="h6"
